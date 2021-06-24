@@ -3,17 +3,19 @@ package pl.wroc.edu.a54321.projectfin;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MainMenu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainMenu extends Fragment {
+public class MainMenu extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,11 +56,51 @@ public class MainMenu extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    public void onNavigationDrawerItemSelected(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment;
+        FragmentManager fragmentManager = getParentFragmentManager(); // For AppCompat use getSupportFragmentManager
+        switch(position) {
+            default:
+            case 0:
+                fragment = new ManualSteering();
+                break;
+            case 1:
+                fragment = new MissionPlanner();
+                break;
+        }
+        fragmentManager.beginTransaction()
+                .replace(R.id.frag_host, fragment)
+                .commit();
+    }
 
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+//    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_main_menu, container, false);
+
+        Button b = (Button) v.findViewById(R.id.buttonSteer);
+        Button p = (Button) v.findViewById(R.id.buttonPlan);
+        b.setOnClickListener(this);
+        p.setOnClickListener(this);
+        return v;
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonSteer:
+                onNavigationDrawerItemSelected(0);
+                break;
+            case R.id.buttonPlan:
+                onNavigationDrawerItemSelected(1);
+                break;
+        }
     }
 }

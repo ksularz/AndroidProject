@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/mainMenu">
 
+    <fragment
+        android:id="@+id/manualSteering"
+        android:name="pl.wroc.edu.a54321.projectfin.ManualSteering"
+        android:label="ManualSteering" />
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="pl.wroc.edu.a54321.projectfin.MainMenu"
+        android:label="MainMenu" >
+        <action
+            android:id="@+id/action_mainMenu_to_manualSteering"
+            app:destination="@id/manualSteering" />
+        <action
+            android:id="@+id/action_mainMenu_to_missionPlanner"
+            app:destination="@id/missionPlanner" />
+    </fragment>
+    <fragment
+        android:id="@+id/missionPlanner"
+        android:name="pl.wroc.edu.a54321.projectfin.MissionPlanner"
+        android:label="MissionPlanner" />
 </navigation>
