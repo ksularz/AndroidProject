@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#73cc65"
+        tools:context=".MainMenu">
+
+        <TextView
+            android:id="@+id/textViewSteer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steering App"
+            android:textColor="@color/white"
+            android:textSize="7mm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSteer"
+            android:layout_width="164dp"
+            android:layout_height="102dp"
+            android:backgroundTint="#149a83"
+            android:baselineAligned="false"
+            android:text="Manual Steering"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSteer"
+            app:layout_constraintVertical_bias="0.48" />
+
+        <Button
+            android:id="@+id/buttonPlan"
+            android:layout_width="164dp"
+            android:layout_height="102dp"
+            android:backgroundTint="#149a83"
+            android:text="Mission Planner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.761"
+            app:layout_constraintStart_toEndOf="@+id/buttonSteer"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSteer"
+            app:layout_constraintVertical_bias="0.483" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
